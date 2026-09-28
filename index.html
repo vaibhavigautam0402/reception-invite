@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaibhavi & Gautam | Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-primary: #132C38; --blue-light: #1E4052; --blue-dark: #0A1A22;
+      --gold: #D4AF37; --gold-light: #E8C97A; --gold-dark: #B5952F;
+      --cream: #F5F1E8; --cream-muted: #B8B0A0;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Montserrat', 'Helvetica Neue', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--blue-primary); color: var(--cream); line-height: 1.7; font-weight: 300; -webkit-font-smoothing: antialiased; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 3rem; display: flex; justify-content: center; gap: 2.5rem; background: linear-gradient(180deg, rgba(19, 44, 56, 0.95) 0%, rgba(19, 44, 56, 0) 100%); backdrop-filter: blur(8px); }
+    nav a { font-family: var(--font-body); font-size: 0.7rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cream-muted); text-decoration: none; padding: 0.4rem 0; border-bottom: 1px solid transparent; transition: all 0.4s ease; }
+    nav a:hover { color: var(--gold-light); border-bottom-color: var(--gold-light); }
+    section { padding: 6rem 2rem; max-width: 900px; margin: 0 auto; }
+    #hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 6rem; position: relative; overflow: hidden; background: radial-gradient(circle at 50% 30%, var(--blue-light) 0%, var(--blue-primary) 70%); }
+    .hero-ornament { font-size: 2.5rem; color: var(--gold-light); margin-bottom: 1.5rem; opacity: 0.8; letter-spacing: 0.5em; }
+    .hero-date { font-family: var(--font-body); font-size: 1.25rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.5rem; }
+    .hero-names { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 300; font-style: italic; line-height: 1.1; color: var(--cream); margin-bottom: 1rem; letter-spacing: 0.02em; text-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .hero-names .ampersand { font-style: normal; font-size: 0.7em; color: var(--gold-light); display: inline-block; margin: 0 0.3em; vertical-align: middle; }
+    .hero-invite { font-family: var(--font-body); font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; color: var(--cream-muted); margin-bottom: 2rem; }
+    .hero-line { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-light), transparent); margin: 0 auto 2rem; }
+    .countdown-container { display: flex; justify-content: center; gap: 1.5rem; margin: 2rem 0 2.5rem; flex-wrap: wrap; }
+    .countdown-item { display: flex; flex-direction: column; align-items: center; min-width: 65px; }
+    .countdown-number { font-family: var(--font-display); font-size: 2.2rem; font-weight: 400; color: var(--gold-light); line-height: 1; }
+    .countdown-label { font-family: var(--font-body); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-muted); margin-top: 0.5rem; }
+    .countdown-separator { font-family: var(--font-display); font-size: 1.8rem; color: var(--gold); opacity: 0.4; align-self: flex-start; margin-top: 0.3rem; }
+    .hero-scroll { position: absolute; bottom: 2rem; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-muted); animation: float 2.5s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+    #families { text-align: center; }
+    .families-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 3rem; }
+    .family-card { padding: 3rem 2rem; border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 2px; background: rgba(245, 241, 232, 0.03); backdrop-filter: blur(10px); transition: all 0.4s ease; }
+    .family-card:hover { border-color: var(--gold-light); background: rgba(245, 241, 232, 0.06); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .family-name { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; font-style: italic; color: var(--gold-light); margin-bottom: 1.5rem; }
+    .family-label { font-family: var(--font-body); font-size: 0.7rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-muted); margin-bottom: 0.5rem; }
+    .family-members { font-family: var(--font-display); font-size: 1.1rem; font-style: italic; color: var(--cream); line-height: 1.8; }
+    #details { text-align: center; }
+    .section-label { font-family: var(--font-body); font-size: 0.65rem; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; font-style: italic; color: var(--cream); margin-bottom: 2.5rem; line-height: 1.2; }
+    .details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; margin-top: 3rem; }
+    .detail-card { padding: 2.5rem 2rem; border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 2px; background: rgba(245, 241, 232, 0.03); transition: all 0.4s ease; backdrop-filter: blur(10px); }
+    .detail-card:hover { border-color: var(--gold-light); background: rgba(245, 241, 232, 0.06); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .detail-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .detail-card h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; color: var(--gold-light); margin-bottom: 1rem; font-style: italic; }
+    .detail-card .event-date { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; color: var(--cream); margin-bottom: 0.5rem; }
+    .detail-card .event-time { font-size: 0.9rem; color: var(--gold-light); margin-bottom: 1rem; }
+    .detail-card p { font-size: 0.85rem; color: var(--cream-muted); line-height: 1.8; }
+    .detail-card .location-link { display: inline-block; margin-top: 1rem; font-size: 0.75rem; color: var(--gold-light); text-decoration: none; border-bottom: 1px solid var(--gold-light); transition: all 0.3s ease; }
+    .detail-card .location-link:hover { color: var(--cream); border-bottom-color: var(--cream); }
+    #rsvp { text-align: center; max-width: 700px; }
+    .rsvp-container { background: rgba(245, 241, 232, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 4px; padding: 3rem 2.5rem; margin-top: 2rem; }
+    .rsvp-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); font-style: italic; color: var(--gold-light); margin-bottom: 1rem; font-weight: 300; }
+    .rsvp-subtitle { font-family: var(--font-display); font-size: 1.1rem; font-style: italic; color: var(--cream-muted); margin-bottom: 2.5rem; font-weight: 300; }
+    .rsvp-form { text-align: left; }
+    .form-group { margin-bottom: 2rem; }
+    .form-group label { display: block; font-family: var(--font-body); font-size: 0.7rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.8rem; }
+    .form-group label .required { color: var(--gold); }
+    .form-group input, .form-group select { width: 100%; padding: 1rem 0; font-family: var(--font-body); font-size: 0.9rem; font-weight: 300; color: var(--cream); background: transparent; border: none; border-bottom: 1px solid rgba(212, 175, 55, 0.3); outline: none; transition: border-color 0.3s ease; }
+    .form-group input::placeholder { color: rgba(245, 241, 232, 0.3); }
+    .form-group input:focus, .form-group select:focus { border-bottom-color: var(--gold-light); }
+    .form-group select { cursor: pointer; appearance: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M0 0l6 8 6-8z' fill='%23E8C97A'/%3E%3C/svg%3E") no-repeat right 0 center; padding-right: 1.5rem; }
+    
+    /* ✅ Subtle visual cue for disabled dropdown */
+    .form-group select:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      border-bottom-color: rgba(212, 175, 55, 0.15);
+      color: var(--cream-muted);
+    }
+    
+    .form-group select option { background: var(--blue-dark); color: var(--cream); padding: 0.8rem; }
+    .btn-submit { display: block; width: 100%; padding: 1.2rem 2rem; font-family: var(--font-body); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--blue-primary); background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); border: 1px solid var(--gold-light); cursor: pointer; transition: all 0.5s ease; border-radius: 2px; margin-top: 1rem; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2); }
+    .btn-submit:hover { background: transparent; border-color: var(--gold-light); color: var(--gold-light); letter-spacing: 0.3em; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .rsvp-success { display: none; padding: 3rem 2rem; text-align: center; }
+    .rsvp-success.show { display: block; }
+    .rsvp-success .checkmark { font-size: 3rem; color: var(--gold-light); margin-bottom: 1rem; }
+    .rsvp-success h3 { font-family: var(--font-display); font-size: 2rem; font-weight: 300; font-style: italic; margin-bottom: 0.5rem; color: var(--cream); }
+    .rsvp-success p { font-size: 0.9rem; color: var(--cream-muted); }
+    .password-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 26, 34, 0.95); backdrop-filter: blur(12px); z-index: 1001; justify-content: center; align-items: center; }
+    .password-modal.show { display: flex; }
+    .password-box { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-primary) 100%); border: 1px solid var(--gold); border-radius: 8px; padding: 3rem; max-width: 400px; width: 90%; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+    .password-title { font-family: var(--font-display); font-size: 1.8rem; color: var(--gold-light); font-style: italic; margin-bottom: 0.5rem; }
+    .password-subtitle { font-size: 0.8rem; color: var(--cream-muted); margin-bottom: 2rem; letter-spacing: 0.1em; }
+    .password-input { width: 100%; padding: 1rem; font-family: var(--font-body); font-size: 1rem; background: rgba(245, 241, 232, 0.05); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 4px; color: var(--cream); margin-bottom: 1.5rem; text-align: center; letter-spacing: 0.2em; }
+    .password-input:focus { outline: none; border-color: var(--gold-light); }
+    .password-btn { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: var(--blue-dark); border: none; border-radius: 4px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; }
+    .password-btn:hover { filter: brightness(1.1); letter-spacing: 0.25em; }
+    .password-error { color: #E8A598; font-size: 0.8rem; margin-top: 1rem; display: none; }
+    .password-error.show { display: block; }
+    .secret-compartment { display: none; position: fixed; bottom: 0; right: 0; width: 350px; max-width: 90vw; background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-primary) 100%); border: 1px solid var(--gold); border-radius: 8px 0 0 0; padding: 2rem; z-index: 1000; backdrop-filter: blur(20px); box-shadow: -5px -5px 30px rgba(0,0,0,0.5); animation: slideIn 0.5s ease; }
+    @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    .secret-compartment.show { display: block; }
+    .secret-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+    .secret-title { font-family: var(--font-display); font-size: 1.3rem; color: var(--gold-light); font-style: italic; }
+    .secret-close { background: none; border: none; color: var(--cream-muted); font-size: 1.5rem; cursor: pointer; transition: color 0.3s ease; }
+    .secret-close:hover { color: var(--gold-light); }
+    .secret-content { margin-bottom: 1.5rem; }
+    .secret-stat { background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 4px; padding: 1.5rem; text-align: center; margin-bottom: 1rem; }
+    .stat-number { font-family: var(--font-display); font-size: 3rem; color: var(--gold-light); font-weight: 600; display: block; }
+    .stat-label { font-size: 0.75rem; color: var(--cream-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+    .secret-link { display: block; width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: var(--blue-dark); text-align: center; text-decoration: none; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; border-radius: 4px; transition: all 0.3s ease; }
+    .secret-link:hover { filter: brightness(1.1); letter-spacing: 0.2em; }
+    .secret-trigger { position: fixed; bottom: 10px; right: 10px; width: 30px; height: 30px; opacity: 0.1; cursor: pointer; z-index: 999; transition: opacity 0.3s ease; color: var(--gold-light); display: flex; align-items: center; justify-content: center; }
+    .secret-trigger:hover { opacity: 0.6; }
+    footer { text-align: center; padding: 4rem 2rem; border-top: 1px solid rgba(212, 175, 55, 0.1); position: relative; }
+    footer .footer-ornament { font-size: 1.5rem; color: var(--gold-light); margin-bottom: 1rem; opacity: 0.6; }
+    footer p { font-size: 0.75rem; color: var(--cream-muted); letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    footer .couple-names { font-family: var(--font-display); font-size: 1.5rem; font-style: italic; color: var(--gold-light); margin: 1rem 0; }
+    .section-divider { text-align: center; padding: 2rem 0; color: var(--gold-light); font-size: 1.2rem; opacity: 0.4; letter-spacing: 0.5em; }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; gap: 1.2rem; }
+      nav a { font-size: 0.6rem; }
+      section { padding: 4rem 1.5rem; }
+      #hero { padding: 6rem 1.5rem 4rem; }
+      .details-grid, .families-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .rsvp-container { padding: 2rem 1.5rem; }
+      .secret-compartment { width: 100%; max-width: 100%; border-radius: 0; }
+      .countdown-container { gap: 1rem; }
+      .countdown-separator { display: none; }
+      .countdown-number { font-size: 1.8rem; }
+    }
+    @media (max-width: 480px) {
+      nav { gap: 0.8rem; flex-wrap: wrap; }
+      .hero-names { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#hero">Home</a><a href="#families">Families</a><a href="#details">Events</a><a href="#rsvp">RSVP</a>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-ornament"> ✦ ✦ ✦</div>
+    <div class="hero-date">05 November 2026</div>
+    <h1 class="hero-names">Vaibhavi <span class="ampersand">&</span> Gautam</h1>
+    <p class="hero-invite">Together with their families, invite you to celebrate their union</p>
+    <div class="hero-line"></div>
+    <div class="countdown-container" id="countdown">
+      <div class="countdown-item"><span class="countdown-number" id="days">00</span><span class="countdown-label">Days</span></div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-item"><span class="countdown-number" id="hours">00</span><span class="countdown-label">Hours</span></div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-item"><span class="countdown-number" id="minutes">00</span><span class="countdown-label">Minutes</span></div>
+      <div class="countdown-separator">:</div>
+      <div class="countdown-item"><span class="countdown-number" id="seconds">00</span><span class="countdown-label">Seconds</span></div>
+    </div>
+    <div class="hero-scroll">Scroll to discover</div>
+  </section>
+
+  <div class="section-divider">✦ ✦ ✦</div>
+  <section id="families">
+    <h2 class="section-title fade-in fade-in-delay-1">The Families</h2>
+    <div class="families-grid">
+      <div class="family-card fade-in fade-in-delay-1"><div class="family-name">Vaibhavi</div><div class="family-label">With love of</div><div class="family-members">Geethapriya & Harish</div></div>
+      <div class="family-card fade-in fade-in-delay-2"><div class="family-name">Gautam</div><div class="family-label">With love of</div><div class="family-members">Suni, Sivakumar, Govindaraj & Gayathri</div></div>
+    </div>
+  </section>
+
+  <div class="section-divider">✦ ✦ ✦</div>
+  <section id="details">
+    <p class="section-label fade-in">The Celebration</p>
+    <h2 class="section-title fade-in fade-in-delay-1">Reception</h2>
+    <div class="details-grid">
+      <div class="detail-card fade-in fade-in-delay-2">
+        <div class="detail-icon">🌙</div><h3>Reception</h3>
+        <div class="event-date">05 November 2026 · Thursday</div>
+        <div class="event-time">06:00 PM onwards</div>
+        <p><strong>Deja Blu</strong><br>Thambankadavu Beach Road<br>Vadanappally, Kerala 680569, India</p>
+        <a href="https://maps.google.com/?q=Deja+Blu+Vadanappally+Kerala" target="_blank" class="location-link">View on Google Maps →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider">✦ ✦ ✦</div>
+  <section id="rsvp">
+    <p class="section-label fade-in">RSVP</p>
+    <div class="rsvp-container fade-in fade-in-delay-1">
+      <h2 class="rsvp-title">We would be honored by your presence</h2>
+      <p class="rsvp-subtitle">Kindly let us know if you will be joining us in this joyous celebration.</p>
+      <form class="rsvp-form" id="rsvpForm">
+        <div class="form-group">
+          <label for="name">Your Name <span class="required">*</span></label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="joining">Will You Be Joining Us? <span class="required">*</span></label>
+          <select id="joining" name="joining" required>
+            <option value="" disabled selected>Select your response</option>
+            <option value="Yes, with joy!">Yes, with joy!</option>
+            <option value="Regretfully cannot attend">Regretfully cannot attend</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="guests">Number of Guests Attending (Including You) <span class="required">*</span></label>
+          <select id="guests" name="guests" required>
+            <option value="" disabled selected>Select number</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit" id="submitBtn">Share Your Presence</button>
+      </form>
+      <div class="rsvp-success" id="rsvpSuccess">
+        <div class="checkmark">✓</div>
+        <h3>Thank You</h3>
+        <p>Your response has been received with love and gratitude.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-ornament">✦</div>
+    <div class="couple-names">Vaibhavi & Gautam</div>
+    <p>05 November 2026 · Thursday</p>
+    <p style="margin-top: 1.5rem; font-size: 0.65rem; opacity: 0.6;">Made with love and blessings</p>
+    <div class="secret-trigger" onclick="openPasswordModal()" title="✦">✦</div>
+  </footer>
+
+  <div class="password-modal" id="passwordModal">
+    <div class="password-box">
+      <div class="password-title">Secret Access</div>
+      <div class="password-subtitle">Enter password to continue</div>
+      <input type="password" class="password-input" id="passwordInput" placeholder="Enter password" maxlength="10">
+      <button class="password-btn" onclick="checkPassword()">Unlock</button>
+      <div class="password-error" id="passwordError">Incorrect password. Please try again.</div>
+    </div>
+  </div>
+
+  <div class="secret-compartment" id="secretCompartment">
+    <div class="secret-header">
+      <div class="secret-title">Guest Tracker</div>
+      <button class="secret-close" onclick="closeSecretCompartment()">×</button>
+    </div>
+    <div class="secret-content">
+      <div class="secret-stat">
+        <span class="stat-number" id="guestCount">--</span>
+        <span class="stat-label">Total Guests Confirmed</span>
+      </div>
+      <p style="font-size: 0.75rem; color: var(--cream-muted); margin-bottom: 1rem; text-align: center;">Live RSVP tracking via Google Sheets</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeTtvoVOhaG-qBne5nObd4ZkFssOrQljnzNrE8HR6qcJ3DAIQ/viewform" target="_blank" class="secret-link">View Google Form Responses</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
